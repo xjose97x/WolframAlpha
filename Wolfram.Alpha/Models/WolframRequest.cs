@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Device.Location;
+using Wolfram.Alpha.Attributes;
 using Wolfram.Alpha.Models.Enums;
 
 namespace Wolfram.Alpha.Models
@@ -16,12 +18,13 @@ namespace Wolfram.Alpha.Models
         /// The desired format for individual result pods
         /// </summary>
         /// <remarks>Default: "plaintext,image"</remarks>
+        [QueryString("format")]
         public List<Format> Formats { get; set; }
 
         /// <summary>
         /// The desired format for full results
         /// </summary>
-        public const string Output = "json";
+        public string Output {get;} = "json";
 
 
         //Pod Selection
@@ -30,18 +33,21 @@ namespace Wolfram.Alpha.Models
         /// Specifies a pod ID to include in the result
         /// </summary>
         /// <remarks>Default: All pods included</remarks>
+        [QueryString("includepodid")]
         public List<string> IncludePodIds { get; set; }
 
         /// <summary>
         /// Specifies a pod ID to exclude from the result	
         /// </summary>
         /// <remarks>Default: No pods excluded</remarks>
+        [QueryString("excludepodid")]
         public List<string> ExclusePodIds { get; set; }
 
         /// <summary>
         /// Specifies a pod title to include in the result	
         /// </summary>
         /// <remarks>Default: All pods returned</remarks>
+        [QueryString("podtitle")]
         public List<string> PodTitles { get; set; }
 
         /// <summary>
@@ -54,6 +60,7 @@ namespace Wolfram.Alpha.Models
         /// Specifies that only pods produced by the given scanner should be returned
         /// </summary>
         /// <remarks>Default: Pods from all scanners returned</remarks>
+        [QueryString("scanner")]
         public List<string> Scanners { get; set; }
 
         //Location
@@ -62,12 +69,14 @@ namespace Wolfram.Alpha.Models
         /// Specifies a custom query location based on an IP address
         /// </summary>
         /// <remarks>Default: Use caller's IP address for location</remarks>
+        [QueryString("ip")]
         public string IpAddress { get; set; }
 
         /// <summary>
         /// Specifies a custom query location based on a latitude/longitude pair
         /// </summary>
         /// <remarks>Default: Use caller's IP address for location</remarks>
+        [QueryString("latlong")]
         public GeoCoordinate GeoCoordinate { get; set; }
 
         /// <summary>
@@ -101,6 +110,7 @@ namespace Wolfram.Alpha.Models
         /// Specify magnification of objects within a pod
         /// </summary>
         /// <remarks>Default: Magnification factor of 1.0</remarks>
+        [QueryString("mag")]
         public int Magnification { get; set; }
 
 
@@ -175,6 +185,7 @@ namespace Wolfram.Alpha.Models
         /// A special signature that can be applied to guard against misuse of your AppID
         /// </summary>
         /// <remarks>Default: No signature applied</remarks>
+        [QueryString("sig")]
         public string Signature { get; set; }
 
         /// <summary>
@@ -188,6 +199,7 @@ namespace Wolfram.Alpha.Models
         /// such as displaying more digits of a large decimal value
         /// </summary>
         /// <remarks>Default: Pod states generated implicitly by the API</remarks>
+        [QueryString("podstate")]
         public List<string> PodStates { get; set; }
 
         /// <summary>
