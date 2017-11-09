@@ -26,5 +26,10 @@ namespace Wolfram.Alpha.Models
         public List<Assumption> Assumptions { get; set; }
         public List<Source> Sources { get; set; }
         public List<Tip> Tips { get; set; }
+        [JsonProperty("languagemsg")]
+        public LanguageMessage LanguageMessage { get; set; }
+        public FutureTopic FutureTopic { get; set; }
+        [JsonProperty("didyoumeans")]
+        public List<DidYouMean> DidYouMean { get; set; }
     }
 }

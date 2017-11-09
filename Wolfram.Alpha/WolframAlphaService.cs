@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Wolfram.Alpha.Models;
@@ -7,13 +8,17 @@ namespace Wolfram.Alpha
 {
     public class WolframAlphaService
     {
-        private string apiUrl = "http://api.wolframalpha.com/v2/query?input=pi&appid=&output=json";
+        private const string apiUrl = "https://api.wolframalpha.com/v2/";
 
-        public string AppId { get; set; }
+        private readonly string appId;
 
         public WolframAlphaService(string appId)
         {
-            AppId = appId;
+            if (string.IsNullOrEmpty(appId))
+            {
+                throw new ArgumentException("Null or empty values are not allowed", nameof(appId));
+            }
+            this.appId = appId;
         }
 
         public async Task<WolframResult> Compute(string input = null)
@@ -28,5 +33,3 @@ namespace Wolfram.Alpha
         }
     }
 }
-
-

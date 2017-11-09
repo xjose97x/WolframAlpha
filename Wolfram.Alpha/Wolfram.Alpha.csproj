@@ -35,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,9 +48,12 @@
     <Compile Include="Converters\SingleOrArrayConverter.cs" />
     <Compile Include="Models\Alternative.cs" />
     <Compile Include="Models\Assumption.cs" />
-    <Compile Include="Models\Enums\Formats.cs" />
+    <Compile Include="Models\DidYouMean.cs" />
+    <Compile Include="Models\Enums\Format.cs" />
     <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\FutureTopic.cs" />
     <Compile Include="Models\Generalization.cs" />
+    <Compile Include="Models\LanguageMessage.cs" />
     <Compile Include="Models\Output\Image.cs" />
     <Compile Include="Models\Info.cs" />
     <Compile Include="Models\Link.cs" />
@@ -66,6 +70,7 @@
     <Compile Include="Models\Warnings\ReinterpretWarning.cs" />
     <Compile Include="Models\Warnings\SpellCheckWarning.cs" />
     <Compile Include="Models\Warnings\TranslationWarning.cs" />
+    <Compile Include="Models\WolframRequest.cs" />
     <Compile Include="Models\WolframResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WolframAlphaService.cs" />
