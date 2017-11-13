@@ -11,12 +11,11 @@ namespace Test
             Console.WriteLine("What would you like to search for?");
             string query = Console.ReadLine();
             var service = new WolframAlphaService("YOUR KEY");
-            var request = new WolframRequest
+            var request = new WolframAlphaRequest
             {
                 Input = query
             };
             var x = service.Compute(request).GetAwaiter().GetResult();
-            Console.WriteLine("Hello, world!");
             Console.ReadKey();
         }
     }

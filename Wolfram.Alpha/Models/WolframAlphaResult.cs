@@ -1,6 +1,6 @@
 ﻿namespace Wolfram.Alpha.Models
 {
-    public class WolframResult
+    public class WolframAlphaResult
     {
         public QueryResult QueryResult { get; set; }
     }

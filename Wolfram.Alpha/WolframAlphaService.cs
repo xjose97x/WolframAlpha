@@ -24,14 +24,14 @@ namespace Wolfram.Alpha
             this.appId = appId;
         }
 
-        public async Task<WolframResult> Compute(WolframRequest request)
+        public async Task<WolframAlphaResult> Compute(WolframAlphaRequest request)
         {
             string url = BuildUrl(apiUrl, request);
             using(var client = new HttpClient())
             {
                 var httpRequest = await client.GetAsync(url);
                 var response = await httpRequest.Content.ReadAsStringAsync();
-                WolframResult result = JsonConvert.DeserializeObject<WolframResult>(response);
+                WolframAlphaResult result = JsonConvert.DeserializeObject<WolframAlphaResult>(response);
                 return result;
             }
         }

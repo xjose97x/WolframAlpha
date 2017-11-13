@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Device.Location;
 using Wolfram.Alpha.Attributes;
 using Wolfram.Alpha.Models.Enums;
 
 namespace Wolfram.Alpha.Models
 {
-    public class WolframRequest
+    public class WolframAlphaRequest
     {
         //Basic Parameters
 
