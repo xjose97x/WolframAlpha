@@ -48,6 +48,7 @@
     <Compile Include="Attributes\QueryString.cs" />
     <Compile Include="Converters\ErrorConverter.cs" />
     <Compile Include="Converters\SingleOrArrayConverter.cs" />
+    <Compile Include="Converters\WarningConverter.cs" />
     <Compile Include="Models\Alternative.cs" />
     <Compile Include="Models\Assumption.cs" />
     <Compile Include="Models\DidYouMean.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Models\Tip.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\Value.cs" />
+    <Compile Include="Models\Warning.cs" />
     <Compile Include="Models\Warnings\DelimitersWarning.cs" />
     <Compile Include="Models\Warnings\ReinterpretWarning.cs" />
     <Compile Include="Models\Warnings\SpellCheckWarning.cs" />

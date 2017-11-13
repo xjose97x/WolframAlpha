@@ -70,5 +70,6 @@ namespace Wolfram.Alpha.Models
         public FutureTopic FutureTopic { get; set; }
         [JsonProperty("didyoumeans")]
         public List<DidYouMean> DidYouMean { get; set; }
+
     }
 }

@@ -40,7 +40,7 @@ namespace Wolfram.Alpha
         {
             var type = request.GetType();
             var properties = type.GetProperties();
-            var validProperties = properties.Where(p => p.GetValue(request, null) != null).Select(p => p.Name.ToLower() + "=" + HttpUtility.UrlEncode(p.GetValue(request, null).ToString()));
+            var validProperties = properties.Where(p => p.GetValue(request, null) != null).Select(p => p.Name.ToLower() + "=" + p.GetValue(request, null).ToString());
             string queryString = String.Join("&", validProperties.ToArray());
             return url + "?" + queryString + $"&appid={appId}";
         }

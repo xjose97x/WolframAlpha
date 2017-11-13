@@ -24,12 +24,15 @@ Create a request to query with WolframAlphaRequest:
 
     WolframAlphaRequest request = new WolframAlphaRequest
     {
-        Input = "20 degrees to radians"
+        Input = "YOUR QUERY"
     };
 
 Send the request to WolframAlpha
 
-    WolframAlphaResult x = service.Compute(request);
+    WolframAlphaResult result = await service.Compute(request);
+
+WolframAlphaResult is a class that holds the [QueryResult](https://products.wolframalpha.com/api/documentation/#result-queryresult).
+<img src="http://community.wolfram.com//c/portal/getImageAttachment?filename=quickwatch.png&userId=1151285" />
 
 
 **We use [GitHub issues](https://github.com/xjose97x/WolframAlpha/issues) for

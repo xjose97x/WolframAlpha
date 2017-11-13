@@ -1,6 +1,6 @@
 ﻿namespace Wolfram.Alpha.Models.Warnings
 {
-    class SpellCheckWarning
+    public class SpellCheckWarning
     {
         public string Word { get; set; }
         public string Suggestion { get; set; }
