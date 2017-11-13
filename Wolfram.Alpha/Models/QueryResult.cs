@@ -26,6 +26,7 @@ namespace Wolfram.Alpha.Models
         /// <summary>
         /// Categories and types of data represented in the results.
         /// </summary>
+        [JsonConverter(typeof(SingleOrArrayConverter<string>))]
         public List<string> DataTypes { get; set; }
 
         /// <summary>

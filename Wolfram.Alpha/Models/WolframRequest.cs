@@ -92,26 +92,26 @@ namespace Wolfram.Alpha.Models
         /// Specify an approximate width limit for text and tables
         /// </summary>
         /// <remarks>Default: Width set at 500 pixels</remarks>
-        public int Width { get; set; }
+        public int Width { get; set; } = 500;
 
         /// <summary>
         /// Specify an extended maximum width for large objects
         /// </summary>
         /// <remarks>Default: Width set at 500 pixels</remarks>
-        public int MaxWidth { get; set; }
+        public int MaxWidth { get; set; } = 500;
 
         /// <summary>
         /// Specify an approximate width limit for plots and graphics
         /// </summary>
         /// <remarks>Default: Plot width set at 200 pixels</remarks>
-        public int PlotWidth { get; set; }
+        public int PlotWidth { get; set; } = 200;
 
         /// <summary>
         /// Specify magnification of objects within a pod
         /// </summary>
         /// <remarks>Default: Magnification factor of 1.0</remarks>
         [QueryString("mag")]
-        public int Magnification { get; set; }
+        public float Magnification { get; set; } = 1.0f;
 
 
         //Timeouts/Async
@@ -121,35 +121,35 @@ namespace Wolfram.Alpha.Models
         /// compute results in the "scan" stage of processing
         /// </summary>
         /// <remarks>Default: Scan stage times out after 3.0 seconds</remarks>
-        public float ScanTimeout { get; set; }
+        public float ScanTimeout { get; set; } = 3.0f;
 
         /// <summary>
         /// The number of seconds to allow Wolfram|Alpha to 
         /// spend in the "format" stage for any one pod
         /// </summary>
         /// <remarks>Default: Individual pods time out after 4.0 seconds</remarks>
-        public float PodTimeout { get; set; }
+        public float PodTimeout { get; set; } = 4.0f;
 
         /// <summary>
         /// The number of seconds to allow Wolfram|Alpha to 
         /// spend in the "format" stage for the entire collection of pods
         /// </summary>
         /// <remarks>Default: Format stage times out after 8.0 seconds</remarks>
-        public float FormatTimeout { get; set; }
+        public float FormatTimeout { get; set; } = 8.0f;
 
         /// <summary>
         /// The number of seconds to allow Wolfram|Alpha to 
         /// spend in the "parsing" stage of processing
         /// </summary>
         /// <remarks>Default: Parsing stage times out after 5.0 seconds</remarks>
-        public float ParseTimeout { get; set; }
+        public float ParseTimeout { get; set; } = 5.0f;
 
         /// <summary>
         /// The total number of seconds to allow Wolfram|Alpha 
         /// to spend on a query
         /// </summary>
         /// <remarks>Default: Queries time out after 20.0 seconds</remarks>
-        public float TotalTimeout { get; set; }
+        public float TotalTimeout { get; set; } = 20.0f;
 
         /// <summary>
         /// Toggles asynchronous mode to allow partial results to 
@@ -207,6 +207,6 @@ namespace Wolfram.Alpha.Models
         /// "metric" or "nonmetric" (US customary units)
         /// </summary>
         /// <remarks>Default: Chosen based on caller's IP address</remarks>
-        public Unit Unit { get; set; }
+        public Unit? Unit { get; set; }
     }
 }

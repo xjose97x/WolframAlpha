@@ -8,10 +8,12 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            var service = new WolframAlphaService("K5JX56-LKP9JK8T69");
+            Console.WriteLine("What would you like to search for?");
+            string query = Console.ReadLine();
+            var service = new WolframAlphaService("YOUR KEY");
             var request = new WolframRequest
             {
-                Input = "pI"
+                Input = query
             };
             var x = service.Compute(request).GetAwaiter().GetResult();
             Console.WriteLine("Hello, world!");
