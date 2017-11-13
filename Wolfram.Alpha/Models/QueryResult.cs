@@ -63,6 +63,7 @@ namespace Wolfram.Alpha.Models
         [JsonConverter(typeof(SingleOrArrayConverter<Assumption>))]
         public List<Assumption> Assumptions { get; set; }
         public List<Source> Sources { get; set; }
+        [JsonConverter(typeof(SingleOrArrayConverter<Tip>))]
         public List<Tip> Tips { get; set; }
         [JsonProperty("languagemsg")]
         public LanguageMessage LanguageMessage { get; set; }
