@@ -2,13 +2,10 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Wolfram.Alpha.Converters
 {
-    class SingleOrArrayConverter<T> : JsonConverter
+    internal class SingleOrArrayConverter<T> : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {
@@ -18,17 +15,10 @@ namespace Wolfram.Alpha.Converters
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JToken token = JToken.Load(reader);
-            if (token.Type == JTokenType.Array)
-            {
-                return token.ToObject<List<T>>();
-            }
-            return new List<T> { token.ToObject<T>() };
+            return token.Type == JTokenType.Array ? token.ToObject<List<T>>() : new List<T> { token.ToObject<T>() };
         }
 
-        public override bool CanWrite
-        {
-            get { return false; }
-        }
+        public override bool CanWrite => false;
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {

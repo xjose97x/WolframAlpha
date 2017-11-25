@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Wolfram.Alpha.Models.Warnings
+﻿namespace Wolfram.Alpha.Models.Warnings
 {
     public class TranslationWarning
     {

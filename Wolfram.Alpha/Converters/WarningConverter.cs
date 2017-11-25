@@ -28,9 +28,6 @@ namespace Wolfram.Alpha.Converters
             throw new NotImplementedException();
         }
 
-        public override bool CanWrite
-        {
-            get { return false; }
-        }
+        public override bool CanWrite => false;
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 using Wolfram.Alpha.Models.Output;
 
 namespace Wolfram.Alpha.Models

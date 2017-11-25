@@ -8,7 +8,7 @@ namespace Wolfram.Alpha.Models
     {
         /// <summary>
         ///  True or false depending on whether the input could be successfully understood. 
-        ///  If false, there will be no <pod> subelements.
+        ///  If false, there will be no pod subelements.
         /// </summary>
         public bool Success { get; set; }
         
@@ -70,6 +70,5 @@ namespace Wolfram.Alpha.Models
         public FutureTopic FutureTopic { get; set; }
         [JsonProperty("didyoumeans")]
         public List<DidYouMean> DidYouMean { get; set; }
-
     }
 }

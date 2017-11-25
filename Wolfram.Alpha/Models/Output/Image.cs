@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Wolfram.Alpha.Models.Output
+﻿namespace Wolfram.Alpha.Models.Output
 {
     public class Image
     {

@@ -2,16 +2,14 @@
 using System;
 using System.Linq;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading.Tasks;
-using System.Web;
 using Wolfram.Alpha.Models;
 
 namespace Wolfram.Alpha
 {
     public class WolframAlphaService
     {
-        private const string apiUrl = "https://api.wolframalpha.com/v2/query";
+        private const string ApiUrl = "https://api.wolframalpha.com/v2/query";
 
         private readonly string appId;
 
@@ -26,7 +24,7 @@ namespace Wolfram.Alpha
 
         public async Task<WolframAlphaResult> Compute(WolframAlphaRequest request)
         {
-            string url = BuildUrl(apiUrl, request);
+            string url = BuildUrl(ApiUrl, request);
             using(var client = new HttpClient())
             {
                 var httpRequest = await client.GetAsync(url);
@@ -42,7 +40,7 @@ namespace Wolfram.Alpha
             var properties = type.GetProperties();
             var validProperties = properties.Where(p => p.GetValue(request, null) != null).Select(p => p.Name.ToLower() + "=" + p.GetValue(request, null).ToString());
             string queryString = String.Join("&", validProperties.ToArray());
-            return url + "?" + queryString + $"&appid={appId}";
+            return $"{url}?{queryString}&appid={appId}";
         }
     }
 }
