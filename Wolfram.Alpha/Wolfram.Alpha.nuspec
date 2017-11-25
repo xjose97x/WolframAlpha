@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>Wolfram.Alpha</id>
+    <version>$version$</version>
+    <title>Wolfram Alpha .NET</title>
+    <authors>José Escudero</authors>
+    <projectUrl>https://github.com/xjose97x/WolframAlpha</projectUrl>
+    <iconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/WolframCorporateLogo.svg/1200px-WolframCorporateLogo.svg.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Wolfram Alpha .NET is a powerful library made to interact with the Wolfram|Alpha API.
+      It was created based on the official up-to-date documentation, and features a fully typed experience with the API.
+    </description>
+    <summary>Wolfram.Alpha .NET is a library made for interacting with WolframAlpha API.</summary>
+    <tags>Wolfram WolframAlpha WolframDotNet</tags>
+  </metadata>
+</package>

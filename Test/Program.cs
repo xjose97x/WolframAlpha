@@ -17,7 +17,17 @@ namespace Test
             };
             var result = service.Compute(request).GetAwaiter().GetResult();
 
-
+            foreach (var pod in result.QueryResult.Pods)
+            {
+                if (pod.SubPods != null)
+                {
+                    Console.WriteLine(pod.Title);
+                    foreach (var subpod in pod.SubPods)
+                    {
+                        Console.WriteLine("    " + subpod.Plaintext);
+                    }
+                }
+            }
 
             Console.ReadKey();
         }
