@@ -68,7 +68,9 @@ namespace Wolfram.Alpha.Models
         [JsonProperty("languagemsg")]
         public LanguageMessage LanguageMessage { get; set; }
         public FutureTopic FutureTopic { get; set; }
+
         [JsonProperty("didyoumeans")]
+        [JsonConverter(typeof(SingleOrArrayConverter<DidYouMean>))]
         public List<DidYouMean> DidYouMean { get; set; }
     }
 }
