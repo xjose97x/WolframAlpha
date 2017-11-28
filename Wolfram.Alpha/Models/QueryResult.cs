@@ -62,6 +62,7 @@ namespace Wolfram.Alpha.Models
         public List<Pod> Pods { get; set; }
         [JsonConverter(typeof(SingleOrArrayConverter<Assumption>))]
         public List<Assumption> Assumptions { get; set; }
+        [JsonConverter(typeof(SingleOrArrayConverter<Source>))]
         public List<Source> Sources { get; set; }
         [JsonConverter(typeof(SingleOrArrayConverter<Tip>))]
         public List<Tip> Tips { get; set; }
