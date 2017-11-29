@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Wolfram.Alpha.Models
 {
+    [Serializable]
     public class Assumption
     {
         public string Type { get; set; }

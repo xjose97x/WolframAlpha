@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Wolfram.Alpha.Models
 {
+    [Serializable]
     public class Error
     {
         public int Code { get; set; }

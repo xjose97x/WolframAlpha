@@ -1,5 +1,8 @@
-﻿namespace Wolfram.Alpha.Models.Output
+﻿using System;
+
+namespace Wolfram.Alpha.Models.Output
 {
+    [Serializable]
     public class Image
     {
         public string Src { get; set; }

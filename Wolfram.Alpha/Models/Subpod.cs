@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Wolfram.Alpha.Models.Output;
 
 namespace Wolfram.Alpha.Models
 {
+    [Serializable]
     public class SubPod
     {
         public string Title { get; set; }

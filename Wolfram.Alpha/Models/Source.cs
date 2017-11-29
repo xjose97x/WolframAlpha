@@ -1,5 +1,8 @@
-﻿namespace Wolfram.Alpha.Models
+﻿using System;
+
+namespace Wolfram.Alpha.Models
 {
+    [Serializable]
     public class Source
     {
         public string Url { get; set; }

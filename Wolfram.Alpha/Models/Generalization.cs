@@ -1,5 +1,8 @@
-﻿namespace Wolfram.Alpha.Models
+﻿using System;
+
+namespace Wolfram.Alpha.Models
 {
+    [Serializable]
     public class Generalization
     {
         public string Topic { get; set; }

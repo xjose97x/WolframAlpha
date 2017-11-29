@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using Wolfram.Alpha.Converters;
 
 namespace Wolfram.Alpha.Models
 {
+    [Serializable]
     public class Pod
     {
         public string Title { get; set; }

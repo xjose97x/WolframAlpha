@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using Wolfram.Alpha.Converters;
 
 namespace Wolfram.Alpha.Models
 {
+    [Serializable]
     public class QueryResult
     {
         /// <summary>
@@ -33,10 +35,11 @@ namespace Wolfram.Alpha.Models
         /// The wall-clock time in seconds required to generate the output.
         /// </summary>
         public float Timing { get; set; }
+
         /// <summary>
         /// The number of pods that are missing because they timed out.
         /// </summary>
-        public int? Timedout { get; set; }
+        public string Timedout { get; set; }
 
         /// <summary>
         /// The time in seconds required by the parsing phase.

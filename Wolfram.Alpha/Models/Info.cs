@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using Wolfram.Alpha.Converters;
 using Wolfram.Alpha.Models.Output;
 
 namespace Wolfram.Alpha.Models
 {
+    [Serializable]
     public class Info
     {
         public string Text { get; set; }

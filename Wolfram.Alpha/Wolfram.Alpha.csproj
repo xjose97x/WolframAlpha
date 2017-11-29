@@ -66,7 +66,7 @@
     <Compile Include="Models\Sound.cs" />
     <Compile Include="Models\Source.cs" />
     <Compile Include="Models\State.cs" />
-    <Compile Include="Models\Subpod.cs" />
+    <Compile Include="Models\SubPod.cs" />
     <Compile Include="Models\Tip.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\Value.cs" />
