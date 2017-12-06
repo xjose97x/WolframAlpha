@@ -7,6 +7,8 @@
 </h1>
 
 -----------------
+[![NuGet](https://img.shields.io/nuget/v/Wolfram.Alpha.svg)](https://www.nuget.org/packages/Wolfram.Alpha/)
+[![NuGet](https://img.shields.io/nuget/dt/Wolfram.Alpha.svg)](https://www.nuget.org/packages/Wolfram.Alpha/) 
 
 ## Basic Overview
 
@@ -34,9 +36,35 @@ Send the request to WolframAlpha
 WolframAlphaResult is a class that holds the [QueryResult](https://products.wolframalpha.com/api/documentation/#result-queryresult).
 <img src="http://community.wolfram.com//c/portal/getImageAttachment?filename=quickwatch.png&userId=1151285" />
 
+Some values may or may not be defined in the result, since it depends on the query and the response given by the Wolfram Alpha Webservice API. For instance, there may be cases in which Wolfram Alpha returns or not Assumptions, Tips, Errors, etc. However, all the properties are defined in the code, and you'll be able to see them when coding (code prediction with Intellisense on Visual Studio)
+
+And if you'd like to print on the console the Pods with text returned, you could do it this way:
+
+    foreach (var pod in result.QueryResult.Pods)
+    {
+        if(pod.SubPods != null)
+        {
+            Console.WriteLine(pod.Title);
+            foreach (var subpod in pod.SubPods)
+            {
+                Console.WriteLine("    " + subpod.Plaintext);
+            }
+        }
+    }
+
+Which will print the following in the case of querying "Stephen Wolfram":
+
+<img src="http://community.wolfram.com//c/portal/getImageAttachment?filename=wolframconsole.png&userId=1151285" />
+
+You can filter and do more complex queries by including other properties on the WolframAlphaRequest object such as the Pod Ids , Units (Metric, non metric), formats, your location, etc. Look at [parameter references](https://products.wolframalpha.com/api/documentation/#parameter-reference).
 
 **We use [GitHub issues](https://github.com/xjose97x/WolframAlpha/issues) for
 tracking requests and bugs.**
+
+## Implementations
+* [Wolfram|Alpha Bot](https://www.facebook.com/wolframalphabot)
+
+
 
 ## For more information
 
