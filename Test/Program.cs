@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using Wolfram.Alpha;
-using Wolfram.Alpha.Models;
+using Wolfram.Alpha.Models.Conversation;
 
 namespace Test
 {
@@ -11,25 +11,33 @@ namespace Test
         {
             var apiKey = ConfigurationManager.AppSettings["WolframAlpha.Key"];
             var service = new WolframAlphaService(apiKey);
-            var request = new WolframAlphaRequest
+            string s = string.Empty, conversationId = string.Empty, host = string.Empty;
+            while (true)
             {
-                Input = "2 pi radians to degrees"
-            };
-            var result = service.Compute(request).GetAwaiter().GetResult();
-
-            foreach (var pod in result.QueryResult.Pods)
-            {
-                if (pod.SubPods != null)
+                Console.Write("> ");
+                string input = Console.ReadLine();
+                var request = new ConversationRequest
                 {
-                    Console.WriteLine(pod.Title);
-                    foreach (var subpod in pod.SubPods)
-                    {
-                        Console.WriteLine("    " + subpod.Plaintext);
-                    }
+                    i = input
+                };
+                if (!string.IsNullOrWhiteSpace(s))
+                {
+                    request.s = s;
                 }
+                if (!string.IsNullOrWhiteSpace(conversationId))
+                {
+                    request.conversationid = conversationId;
+                }
+                if (!string.IsNullOrWhiteSpace(host))
+                {
+                    request.Host = host;
+                }
+                var result = service.Compute(request).GetAwaiter().GetResult();
+                s = result.S;
+                conversationId = result.ConversationId;
+                host = result.Host;
+               Console.WriteLine(!string.IsNullOrWhiteSpace(result.Error) ? result.Error : result.Result);
             }
-
-            Console.ReadKey();
         }
     }
 }

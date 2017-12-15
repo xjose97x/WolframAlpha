@@ -7,6 +7,11 @@ namespace Wolfram.Alpha.Models
 {
     public class WolframAlphaRequest
     {
+        public WolframAlphaRequest(string input)
+        {
+            Input = input;
+        }
+
         //Basic Parameters
 
         /// <summary>

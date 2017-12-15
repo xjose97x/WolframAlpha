@@ -52,6 +52,8 @@
     <Compile Include="Converters\WarningConverter.cs" />
     <Compile Include="Models\Alternative.cs" />
     <Compile Include="Models\Assumption.cs" />
+    <Compile Include="Models\Conversation\ConversationRequest.cs" />
+    <Compile Include="Models\Conversation\ConversationResult.cs" />
     <Compile Include="Models\DidYouMean.cs" />
     <Compile Include="Models\Enums\Format.cs" />
     <Compile Include="Models\Error.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Models\Info.cs" />
     <Compile Include="Models\Link.cs" />
     <Compile Include="Models\Pod.cs" />
+    <Compile Include="Models\QueryRecognizerResult.cs" />
     <Compile Include="Models\QueryResult.cs" />
     <Compile Include="Models\Sound.cs" />
     <Compile Include="Models\Source.cs" />
