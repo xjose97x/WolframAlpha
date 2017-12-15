@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using Wolfram.Alpha.Models;
 
 namespace Wolfram.Alpha
@@ -38,7 +39,7 @@ namespace Wolfram.Alpha
         {
             var type = request.GetType();
             var properties = type.GetProperties();
-            var validProperties = properties.Where(p => p.GetValue(request, null) != null).Select(p => p.Name.ToLower() + "=" + p.GetValue(request, null).ToString().ToLower());
+            var validProperties = properties.Where(p => p.GetValue(request, null) != null).Select(p => p.Name.ToLower() + "=" + HttpUtility.UrlEncode(p.GetValue(request, null).ToString()));
             string queryString = String.Join("&", validProperties.ToArray());
             return $"{url}?{queryString}&appid={appId}";
         }
