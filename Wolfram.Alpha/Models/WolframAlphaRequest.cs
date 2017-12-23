@@ -1,24 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Device.Location;
 using Wolfram.Alpha.Attributes;
-using Wolfram.Alpha.Models.Enums;
 
 namespace Wolfram.Alpha.Models
 {
     public class WolframAlphaRequest
     {
+        public WolframAlphaRequest(string input)
+        {
+            Input = input;
+        }
+
         //Basic Parameters
 
         /// <summary>
-        /// Specifies a pod ID to include in the result
+        /// Text specifying the input string
         /// </summary>
-        public string Input { get; set; }
+        public string Input { get; }
+
         /// <summary>
         /// The desired format for individual result pods
         /// </summary>
         /// <remarks>Default: "plaintext,image"</remarks>
         [QueryString("format")]
-        public List<Format> Formats { get; set; }
+        public List<string> Formats { get; set; } = new List<string>{ Format.Plaintext, Format.Image };
 
         /// <summary>
         /// The desired format for full results

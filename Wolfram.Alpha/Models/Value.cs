@@ -10,5 +10,6 @@ namespace Wolfram.Alpha.Models
         [JsonProperty("desc")]
         public string Description { get; set; }
         public string Input { get; set; }
+        public string Word { get; set; }
     }
 }

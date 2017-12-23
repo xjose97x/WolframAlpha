@@ -13,6 +13,7 @@ namespace Wolfram.Alpha.Models
         public string Id { get; set; }
         public int Position { get; set; }
         public bool Error { get; set; }
+        public string Async { get; set; }
         public bool Primary { get; set; }
         public List<SubPod> SubPods { get; set; }
         public List<State> States { get; set; }

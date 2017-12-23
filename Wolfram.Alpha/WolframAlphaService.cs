@@ -1,9 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Web;
+using Wolfram.Alpha.Attributes;
 using Wolfram.Alpha.Models;
 
 namespace Wolfram.Alpha
@@ -39,7 +42,30 @@ namespace Wolfram.Alpha
         {
             var type = request.GetType();
             var properties = type.GetProperties();
-            var validProperties = properties.Where(p => p.GetValue(request, null) != null).Select(p => p.Name.ToLower() + "=" + HttpUtility.UrlEncode(p.GetValue(request, null).ToString()));
+            var validProperties = properties.Where(p => p.GetValue(request, null) != null).Select(p =>
+            {
+                var name = p.Name.ToLower();
+                var attribute = p.GetCustomAttribute<QueryString>(inherit: true);
+                if (attribute != null)
+                {
+                    name = attribute.Name;
+                }
+                var value = p.GetValue(request, null);
+                var stringValue = value.ToString();                
+                if (value is bool)
+                {
+                    stringValue = value.ToString().ToLower();
+                }
+                else if (value is List<String> list)
+                {
+                    stringValue = String.Join(",", list);
+                }
+                else
+                {
+                    stringValue = HttpUtility.UrlEncode(stringValue);
+                }
+                return $"{name}={stringValue}";
+            });
             string queryString = String.Join("&", validProperties.ToArray());
             return $"{url}?{queryString}&appid={appId}";
         }

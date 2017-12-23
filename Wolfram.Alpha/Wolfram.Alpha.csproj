@@ -53,8 +53,8 @@
     <Compile Include="Models\Alternative.cs" />
     <Compile Include="Models\Assumption.cs" />
     <Compile Include="Models\DidYouMean.cs" />
-    <Compile Include="Models\Enums\Format.cs" />
     <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\Format.cs" />
     <Compile Include="Models\FutureTopic.cs" />
     <Compile Include="Models\Generalization.cs" />
     <Compile Include="Models\LanguageMessage.cs" />

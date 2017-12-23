@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using Wolfram.Alpha;
 using Wolfram.Alpha.Models;
@@ -11,25 +12,25 @@ namespace Test
         {
             var apiKey = ConfigurationManager.AppSettings["WolframAlpha.Key"];
             var service = new WolframAlphaService(apiKey);
-            var request = new WolframAlphaRequest
-            {
-                Input = "2 pi radians to degrees"
-            };
+            var request = new WolframAlphaRequest("C Major");
+
             var result = service.Compute(request).GetAwaiter().GetResult();
 
-            foreach (var pod in result.QueryResult.Pods)
+            if (result.QueryResult.Pods != null)
             {
-                if (pod.SubPods != null)
+                foreach (var pod in result.QueryResult.Pods)
                 {
-                    Console.WriteLine(pod.Title);
-                    foreach (var subpod in pod.SubPods)
+                    if (pod.SubPods != null)
                     {
-                        Console.WriteLine("    " + subpod.Plaintext);
+                        Console.WriteLine(pod.Title);
+                        foreach (var subpod in pod.SubPods)
+                        {
+                            Console.WriteLine("    " + subpod.Plaintext);
+                        }
                     }
                 }
+                Console.ReadKey();
             }
-
-            Console.ReadKey();
         }
     }
 }
