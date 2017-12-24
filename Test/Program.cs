@@ -12,7 +12,15 @@ namespace Test
         {
             var apiKey = ConfigurationManager.AppSettings["WolframAlpha.Key"];
             var service = new WolframAlphaService(apiKey);
-            var request = new WolframAlphaRequest("C Major");
+            var request = new WolframAlphaRequest("C Major")
+            {
+                Formats = new List<string>
+                {
+                    Format.Plaintext,
+                    Format.Image,
+                    Format.Sound
+                }
+            };
 
             var result = service.Compute(request).GetAwaiter().GetResult();
 

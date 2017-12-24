@@ -19,6 +19,7 @@ namespace Wolfram.Alpha.Models
         public List<State> States { get; set; }
         [JsonConverter(typeof(SingleOrArrayConverter<Info>))]
         public List<Info> Infos { get; set; }
+        [JsonConverter(typeof(SingleOrArrayConverter<Sound>))]
         public List<Sound> Sounds { get; set; }
         public Generalization Generalization { get; set; }
     }

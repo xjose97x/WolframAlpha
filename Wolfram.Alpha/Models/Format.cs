@@ -14,9 +14,14 @@ namespace Wolfram.Alpha.Models
         public const string Sound = "sound";
         public const string Wav = "sound";
 
-        public static List<string> WolframAlphaCommon() => new List<string>
+        public static List<string> Default() => new List<string>
         {
-            Image, Plaintext, Image, ImageMap, Sound, MathematicaInput, MathematicaOutput
+            Image, Plaintext
+        };
+
+        public static List<string> WolframAlphaDefault() => new List<string>
+        {
+            Image, Plaintext, ImageMap, Sound, MathematicaInput, MathematicaOutput
         };
 
         public static List<string> All() => new List<string>

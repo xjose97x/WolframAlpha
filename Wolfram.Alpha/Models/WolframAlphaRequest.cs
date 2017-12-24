@@ -23,7 +23,7 @@ namespace Wolfram.Alpha.Models
         /// </summary>
         /// <remarks>Default: "plaintext,image"</remarks>
         [QueryString("format")]
-        public List<string> Formats { get; set; } = new List<string>{ Format.Plaintext, Format.Image };
+        public List<string> Formats { get; set; } = Format.Default();
 
         /// <summary>
         /// The desired format for full results
