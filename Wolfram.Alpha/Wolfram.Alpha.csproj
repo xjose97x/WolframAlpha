@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Attributes\QueryString.cs" />
     <Compile Include="Converters\ErrorConverter.cs" />
+    <Compile Include="Converters\InstantCalculatorsValueConverter.cs" />
     <Compile Include="Converters\SingleOrArrayConverter.cs" />
     <Compile Include="Converters\WarningConverter.cs" />
     <Compile Include="Models\Alternative.cs" />
@@ -59,6 +60,9 @@
     <Compile Include="Models\Format.cs" />
     <Compile Include="Models\FutureTopic.cs" />
     <Compile Include="Models\Generalization.cs" />
+    <Compile Include="Models\InstantCalculators\InstantCalculatorsFormula.cs" />
+    <Compile Include="Models\InstantCalculators\InstantCalculatorsValue.cs" />
+    <Compile Include="Models\InstantCalculators\InstantCalculatorsVariable.cs" />
     <Compile Include="Models\LanguageMessage.cs" />
     <Compile Include="Models\Output\Image.cs" />
     <Compile Include="Models\Info.cs" />

@@ -7,10 +7,7 @@ namespace Wolfram.Alpha.Converters
 {
     internal class SingleOrArrayConverter<T> : JsonConverter
     {
-        public override bool CanConvert(Type objectType)
-        {
-            return (objectType == typeof(List<T>));
-        }
+        public override bool CanConvert(Type objectType) => (objectType == typeof(List<T>));
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
@@ -20,9 +17,6 @@ namespace Wolfram.Alpha.Converters
 
         public override bool CanWrite => false;
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotImplementedException();
     }
 }

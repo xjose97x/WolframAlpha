@@ -86,8 +86,7 @@ namespace Wolfram.Alpha
             {
                 var httpRequest = await client.GetAsync(url);
                 var response = await httpRequest.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<QueryRecognizerResult>(response);
-                return result;
+                return JsonConvert.DeserializeObject<QueryRecognizerResult>(response);
             }
         }
 

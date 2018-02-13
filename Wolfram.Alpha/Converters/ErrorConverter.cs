@@ -6,10 +6,7 @@ namespace Wolfram.Alpha.Converters
 {
     internal class ErrorConverter : JsonConverter
     {
-        public override bool CanConvert(Type objectType)
-        {
-            throw new NotImplementedException();
-        }
+        public override bool CanConvert(Type objectType) => throw new NotImplementedException();
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
@@ -17,9 +14,6 @@ namespace Wolfram.Alpha.Converters
             return token.Type == JTokenType.Boolean ? null : token.ToObject(objectType);
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotImplementedException();
     }
 }

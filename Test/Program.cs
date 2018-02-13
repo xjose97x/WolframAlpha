@@ -128,10 +128,7 @@ namespace Test
             Console.WriteLine("What would you like to search for?");
             string input = Console.ReadLine();
 
-            var request = new QueryRecognizerRequest(input)
-            {
-                Mode = QueryRecognizerMode.Voice
-            };
+            var request = new QueryRecognizerRequest(input);
 
             var result = service.Compute(request).GetAwaiter().GetResult();
             if (result.Query.First().Accepted)
