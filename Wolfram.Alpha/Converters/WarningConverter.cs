@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Wolfram.Alpha.Converters
 {
-    public class WarningConverter : JsonConverter
+    internal class WarningConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

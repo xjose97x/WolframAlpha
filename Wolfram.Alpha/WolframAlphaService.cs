@@ -1,20 +1,22 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Web;
 using System.Linq;
+using Newtonsoft.Json;
 using System.Net.Http;
 using System.Reflection;
-using System.Threading.Tasks;
-using System.Web;
-using Wolfram.Alpha.Attributes;
 using Wolfram.Alpha.Models;
+using System.Threading.Tasks;
+using Wolfram.Alpha.Attributes;
+using System.Collections.Generic;
+using Wolfram.Alpha.Models.Conversation;
 
 namespace Wolfram.Alpha
 {
     public class WolframAlphaService
     {
-        private const string ApiUrl = "https://api.wolframalpha.com/v2/query";
-
+        private const string ApiBaseUrl = "https://api.wolframalpha.com/";
+        private const string ApiUrl = "v2/query";
+        private const string ConversationApiUrl = "v1/conversation.jsp";
         private readonly string appId;
 
         public WolframAlphaService(string appId)
@@ -28,7 +30,7 @@ namespace Wolfram.Alpha
 
         public async Task<WolframAlphaResult> Compute(WolframAlphaRequest request)
         {
-            string url = BuildUrl(ApiUrl, request);
+            string url = BuildUrl(ApiBaseUrl + ApiUrl, request);
             using(var client = new HttpClient())
             {
                 var httpRequest = await client.GetAsync(url);
@@ -37,6 +39,36 @@ namespace Wolfram.Alpha
                 return result;
             }
         }
+
+        public async Task<ConversationResult> Compute(ConversationRequest request)
+        {
+            string baseUrl = ApiBaseUrl;
+            if (!string.IsNullOrWhiteSpace(request?.Host))
+            {
+                baseUrl = $"https://{request.Host}/api/";
+            }
+            baseUrl += ConversationApiUrl;
+            string url = BuildUrl(baseUrl, request);
+            using (var client = new HttpClient())
+            {
+                var httpRequest = await client.GetAsync(url);
+                var response = await httpRequest.Content.ReadAsStringAsync();
+                ConversationResult result = JsonConvert.DeserializeObject<ConversationResult>(response);
+                return result;
+            }
+        }
+
+        public async Task<QueryRecognizerResult> QueryRecognizer(string input)
+        {
+            string url = $"https://www.wolframalpha.com/queryrecognizer/query.jsp?appid={appId}&mode=Default&output=json&i={input}";
+            using (var client = new HttpClient())
+            {
+                var httpRequest = await client.GetAsync(url);
+                var response = await httpRequest.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<QueryRecognizerResult>(response);
+                return result;
+            }
+        } 
 
         private string BuildUrl(string url, object request)
         {
