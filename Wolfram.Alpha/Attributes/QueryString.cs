@@ -2,7 +2,7 @@
 
 namespace Wolfram.Alpha.Attributes
 {
-    public class QueryString : Attribute
+    internal class QueryString : Attribute
     {
         public string Name { get; set; }
         public QueryString(string name)
