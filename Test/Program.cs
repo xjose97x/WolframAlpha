@@ -21,8 +21,8 @@ namespace Test
             do
             {
                 Console.WriteLine("*** WOLFRAM ALPHA .NET ***");
-                Console.WriteLine("1.Full Results API");
-                Console.WriteLine("2.Conversational API");
+                Console.WriteLine("1. Full Results API");
+                Console.WriteLine("2. Conversational API");
                 Console.WriteLine("3. Fast Query Recognizer API");
                 Console.WriteLine("4. Spoken Results API");
                 int.TryParse(Console.ReadLine(), out apiOption);
@@ -83,7 +83,7 @@ namespace Test
                         Console.WriteLine(pod.Title);
                         foreach (var subpod in pod.SubPods)
                         {
-                            Console.WriteLine("    " + subpod.Plaintext);
+                            Console.WriteLine($"\t{subpod.Plaintext}");
                         }
                     }
                 }
@@ -131,14 +131,9 @@ namespace Test
             var request = new QueryRecognizerRequest(input);
 
             var result = service.Compute(request).GetAwaiter().GetResult();
-            if (result.Query.First().Accepted)
-            {
-                Console.WriteLine("Most likely Wolfram|Alpha would be able to handle the request");
-            }
-            else
-            {
-                Console.WriteLine("Most likely Wolfram|Alpha would not be able to handle the request");
-            }
+            Console.WriteLine(result.Query.First().Accepted
+                ? "Most likely Wolfram|Alpha would be able to handle the request"
+                : "Most likely Wolfram|Alpha would not be able to handle the request");
             Console.ReadLine();
         }
 

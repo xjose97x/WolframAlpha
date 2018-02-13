@@ -113,10 +113,10 @@ namespace Wolfram.Alpha
             var validProperties = properties.Where(p => p.GetValue(request, null) != null).Select(p =>
             {
                 var name = p.Name.ToLower();
-                var attribute = p.GetCustomAttribute<QueryString>(inherit: true);
-                if (attribute != null)
+                var queryStringAttribute = p.GetCustomAttribute<QueryStringAttribute>(inherit: true);
+                if (queryStringAttribute != null)
                 {
-                    name = attribute.Name;
+                    name = queryStringAttribute.Name;
                 }
                 var value = p.GetValue(request, null);
                 var stringValue = value.ToString();                
@@ -126,6 +126,27 @@ namespace Wolfram.Alpha
                 }
                 else if (value is List<String> list)
                 {
+                    var multipleQueryStringParameterAttribute = p.GetCustomAttribute<MultipleQueryStringParameterAttribute>(inherit: true);
+                    if (multipleQueryStringParameterAttribute != null)
+                    {
+                        var q = list.GroupBy(x => x)
+                            .Select(x => new
+                            {
+                                Count = x.Count(),
+                                Name = x.Key
+                            });
+                        string parameters = "";
+                        foreach (var item in q)
+                        {
+                            parameters += $"{name}=";
+                            if (item.Count > 1)
+                            {
+                                parameters += $"{item.Count}@";
+                            }
+                            parameters += $"{HttpUtility.UrlEncode(item.Name)}&";
+                        }
+                        return parameters.Remove(parameters.Length - 1);
+                    }
                     stringValue = String.Join(",", list);
                 }
                 else

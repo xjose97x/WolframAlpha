@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\QueryString.cs" />
+    <Compile Include="Attributes\MultipleQueryStringParameterAttribute.cs" />
+    <Compile Include="Attributes\QueryStringAttribute.cs" />
     <Compile Include="Converters\ErrorConverter.cs" />
     <Compile Include="Converters\InstantCalculatorsValueConverter.cs" />
     <Compile Include="Converters\SingleOrArrayConverter.cs" />

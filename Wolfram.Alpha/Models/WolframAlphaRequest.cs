@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Device.Location;
+﻿using System.Device.Location;
 using Wolfram.Alpha.Attributes;
+using System.Collections.Generic;
 
 namespace Wolfram.Alpha.Models
 {
@@ -204,6 +204,7 @@ namespace Wolfram.Alpha.Models
         /// </summary>
         /// <remarks>Default: Pod states generated implicitly by the API</remarks>
         [QueryString("podstate")]
+        [MultipleQueryStringParameter]
         public List<string> PodStates { get; set; }
 
         /// <summary>
