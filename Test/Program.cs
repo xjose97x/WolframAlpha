@@ -3,7 +3,9 @@ using Wolfram.Alpha;
 using System.Configuration;
 using Wolfram.Alpha.Models;
 using System.Collections.Generic;
+using System.Linq;
 using Wolfram.Alpha.Models.Conversation;
+using Wolfram.Alpha.Models.QueryRecognizer;
 
 namespace Test
 {
@@ -20,8 +22,9 @@ namespace Test
                 Console.WriteLine("*** WOLFRAM ALPHA .NET ***");
                 Console.WriteLine("1.Full Results API");
                 Console.WriteLine("2.Conversational API");
-                apiOption = int.Parse(Console.ReadLine() ?? throw new InvalidOperationException());
-            } while (apiOption > 2 || apiOption < 1);
+                Console.WriteLine("3. Fast Query Recognizer API");
+                int.TryParse(Console.ReadLine(), out apiOption);
+            } while (apiOption > 3 || apiOption < 1);
 
             switch (apiOption)
             {
@@ -33,6 +36,11 @@ namespace Test
                 case 2:
                 {
                     Conversational();
+                    break;
+                }
+                case 3:
+                {
+                    FastQueryRecognizer();
                     break;
                 }
             }
@@ -109,6 +117,29 @@ namespace Test
                 host = result.Host;
                 Console.WriteLine(!string.IsNullOrWhiteSpace(result.Error) ? result.Error : result.Result);
             }
+        }
+
+        private static void FastQueryRecognizer()
+        {
+            Console.WriteLine("What would you like to search for?");
+            string input = Console.ReadLine();
+
+            var request = new QueryRecognizerRequest
+            {
+                Input = input,
+                Mode = QueryRecognizerMode.Voice
+            };
+
+            var result = service.Compute(request).GetAwaiter().GetResult();
+            if (result.Query.First().Accepted)
+            {
+                Console.WriteLine("Most likely Wolfram|Alpha would be able to handle the request");
+            }
+            else
+            {
+                Console.WriteLine("Most likely Wolfram|Alpha would not be able to handle the request");
+            }
+            Console.ReadLine();
         }
     }
 }

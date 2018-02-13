@@ -64,7 +64,10 @@
     <Compile Include="Models\Info.cs" />
     <Compile Include="Models\Link.cs" />
     <Compile Include="Models\Pod.cs" />
-    <Compile Include="Models\QueryRecognizerResult.cs" />
+    <Compile Include="Models\QueryRecognizer\Query.cs" />
+    <Compile Include="Models\QueryRecognizer\QueryRecognizerMode.cs" />
+    <Compile Include="Models\QueryRecognizer\QueryRecognizerRequest.cs" />
+    <Compile Include="Models\QueryRecognizer\QueryRecognizerResult.cs" />
     <Compile Include="Models\QueryResult.cs" />
     <Compile Include="Models\Sound.cs" />
     <Compile Include="Models\Source.cs" />

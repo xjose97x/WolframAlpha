@@ -9,16 +9,20 @@ using System.Threading.Tasks;
 using Wolfram.Alpha.Attributes;
 using System.Collections.Generic;
 using Wolfram.Alpha.Models.Conversation;
+using Wolfram.Alpha.Models.QueryRecognizer;
 
 namespace Wolfram.Alpha
 {
     public class WolframAlphaService
     {
         private const string ApiBaseUrl = "https://api.wolframalpha.com/";
-        private const string ApiUrl = "v2/query";
-        private const string ConversationApiUrl = "v1/conversation.jsp";
-        private readonly string appId;
+        private const string FullResultsApiUrl = "v2/query";
+        private const string ConversationalApiUrl = "v1/conversation.jsp";
 
+        private const string FastQueryRecognizerUrl = "http://www.wolframalpha.com/queryrecognizer/query.jsp";
+
+        private readonly string appId;
+        
         public WolframAlphaService(string appId)
         {
             if (string.IsNullOrEmpty(appId))
@@ -28,9 +32,14 @@ namespace Wolfram.Alpha
             this.appId = appId;
         }
 
+        /// <summary>
+        /// Makes a Full Results API request
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public async Task<WolframAlphaResult> Compute(WolframAlphaRequest request)
         {
-            string url = BuildUrl(ApiBaseUrl + ApiUrl, request);
+            string url = BuildUrl(ApiBaseUrl + FullResultsApiUrl, request);
             using(var client = new HttpClient())
             {
                 var httpRequest = await client.GetAsync(url);
@@ -40,6 +49,11 @@ namespace Wolfram.Alpha
             }
         }
 
+        /// <summary>
+        /// Makes a Conversational API request
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public async Task<ConversationResult> Compute(ConversationRequest request)
         {
             string baseUrl = ApiBaseUrl;
@@ -47,7 +61,7 @@ namespace Wolfram.Alpha
             {
                 baseUrl = $"https://{request.Host}/api/";
             }
-            baseUrl += ConversationApiUrl;
+            baseUrl += ConversationalApiUrl;
             string url = BuildUrl(baseUrl, request);
             using (var client = new HttpClient())
             {
@@ -58,9 +72,14 @@ namespace Wolfram.Alpha
             }
         }
 
-        public async Task<QueryRecognizerResult> QueryRecognizer(string input)
+        /// <summary>
+        /// Makes a Fast Query Recognizer API request
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<QueryRecognizerResult> Compute(QueryRecognizerRequest request)
         {
-            string url = $"https://www.wolframalpha.com/queryrecognizer/query.jsp?appid={appId}&mode=Default&output=json&i={input}";
+            string url = $"{FastQueryRecognizerUrl}?appid={appId}&mode={request.Mode}&output=json&i={request.Input}";
             using (var client = new HttpClient())
             {
                 var httpRequest = await client.GetAsync(url);

@@ -1,5 +1,8 @@
-﻿namespace Wolfram.Alpha.Models.Conversation
+﻿using System;
+
+namespace Wolfram.Alpha.Models.Conversation
 {
+    [Serializable]
     public class ConversationResult
     {
         public string Result { get; set; }
