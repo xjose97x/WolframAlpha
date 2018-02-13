@@ -1,7 +1,9 @@
-﻿using Wolfram.Alpha.Models.Warnings;
+﻿using System;
+using Wolfram.Alpha.Models.Warnings;
 
 namespace Wolfram.Alpha.Models
 {
+    [Serializable]
     public class Warning
     {
         public TranslationWarning Translation { get; set; }

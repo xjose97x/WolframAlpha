@@ -4,8 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Wolfram.Alpha.Attributes;
 using Wolfram.Alpha.Converters;
 
 namespace Wolfram.Alpha.Models
