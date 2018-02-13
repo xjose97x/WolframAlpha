@@ -28,7 +28,7 @@ namespace Wolfram.Alpha.Models
         /// <summary>
         /// The desired format for full results
         /// </summary>
-        public string Output {get;} = "json";
+        public string Output { get; } = "json";
 
 
         //Pod Selection

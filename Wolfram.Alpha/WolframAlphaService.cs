@@ -10,6 +10,7 @@ using Wolfram.Alpha.Attributes;
 using System.Collections.Generic;
 using Wolfram.Alpha.Models.Conversation;
 using Wolfram.Alpha.Models.QueryRecognizer;
+using Wolfram.Alpha.Models.SpokenResults;
 
 namespace Wolfram.Alpha
 {
@@ -18,6 +19,7 @@ namespace Wolfram.Alpha
         private const string ApiBaseUrl = "https://api.wolframalpha.com/";
         private const string FullResultsApiUrl = "v2/query";
         private const string ConversationalApiUrl = "v1/conversation.jsp";
+        private const string SpokenResultsApiUrl = "v1/spoken";
 
         private const string FastQueryRecognizerUrl = "http://www.wolframalpha.com/queryrecognizer/query.jsp";
 
@@ -79,7 +81,7 @@ namespace Wolfram.Alpha
         /// <returns></returns>
         public async Task<QueryRecognizerResult> Compute(QueryRecognizerRequest request)
         {
-            string url = $"{FastQueryRecognizerUrl}?appid={appId}&mode={request.Mode}&output=json&i={request.Input}";
+            string url = BuildUrl(FastQueryRecognizerUrl, request);
             using (var client = new HttpClient())
             {
                 var httpRequest = await client.GetAsync(url);
@@ -87,7 +89,23 @@ namespace Wolfram.Alpha
                 var result = JsonConvert.DeserializeObject<QueryRecognizerResult>(response);
                 return result;
             }
-        } 
+        }
+
+        /// <summary>
+        /// Makes a Spoken API request
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<string> Compute(SpokenResultsRequest request)
+        {
+            string url = BuildUrl($"{ApiBaseUrl}{SpokenResultsApiUrl}", request);
+            using (var client = new HttpClient())
+            {
+                var httpRequest = await client.GetAsync(url);
+                var response = await httpRequest.Content.ReadAsStringAsync();
+                return response;
+            }
+        }
 
         private string BuildUrl(string url, object request)
         {

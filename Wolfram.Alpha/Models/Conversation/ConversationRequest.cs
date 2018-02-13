@@ -1,10 +1,17 @@
 ﻿using System.Device.Location;
+using Wolfram.Alpha.Attributes;
 
 namespace Wolfram.Alpha.Models.Conversation
 {
     public class ConversationRequest
     {
-        public string I { get; set; }
+        public ConversationRequest(string input)
+        {
+            Input = input;
+        }
+
+        [QueryString("i")]
+        public string Input { get; set; }
         public GeoCoordinate GeoLocation { get; set; }
         public string Ip { get; set; }
         public string Units { get; set; }

@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Linq;
 using Wolfram.Alpha;
 using System.Configuration;
 using Wolfram.Alpha.Models;
 using System.Collections.Generic;
-using System.Linq;
 using Wolfram.Alpha.Models.Conversation;
+using Wolfram.Alpha.Models.SpokenResults;
 using Wolfram.Alpha.Models.QueryRecognizer;
 
 namespace Test
@@ -23,8 +24,9 @@ namespace Test
                 Console.WriteLine("1.Full Results API");
                 Console.WriteLine("2.Conversational API");
                 Console.WriteLine("3. Fast Query Recognizer API");
+                Console.WriteLine("4. Spoken Results API");
                 int.TryParse(Console.ReadLine(), out apiOption);
-            } while (apiOption > 3 || apiOption < 1);
+            } while (apiOption > 4 || apiOption < 1);
 
             switch (apiOption)
             {
@@ -41,6 +43,11 @@ namespace Test
                 case 3:
                 {
                     FastQueryRecognizer();
+                    break;
+                }
+                case 4:
+                {
+                    SpokenResults();
                     break;
                 }
             }
@@ -95,10 +102,7 @@ namespace Test
             {
                 Console.Write("> ");
                 string input = Console.ReadLine();
-                var request = new ConversationRequest
-                {
-                    I = input
-                };
+                var request = new ConversationRequest(input);
                 if (!string.IsNullOrWhiteSpace(s))
                 {
                     request.S = s;
@@ -124,9 +128,8 @@ namespace Test
             Console.WriteLine("What would you like to search for?");
             string input = Console.ReadLine();
 
-            var request = new QueryRecognizerRequest
+            var request = new QueryRecognizerRequest(input)
             {
-                Input = input,
                 Mode = QueryRecognizerMode.Voice
             };
 
@@ -139,6 +142,19 @@ namespace Test
             {
                 Console.WriteLine("Most likely Wolfram|Alpha would not be able to handle the request");
             }
+            Console.ReadLine();
+        }
+
+        private static void SpokenResults()
+        {
+            Console.WriteLine("What would you like to search for?");
+            string input = Console.ReadLine();
+
+            var request = new SpokenResultsRequest(input);
+
+            var result = service.Compute(request).GetAwaiter().GetResult();
+
+            Console.WriteLine(result);
             Console.ReadLine();
         }
     }

@@ -71,6 +71,8 @@
     <Compile Include="Models\QueryResult.cs" />
     <Compile Include="Models\Sound.cs" />
     <Compile Include="Models\Source.cs" />
+    <Compile Include="Models\SpokenResults\SpokenResultsRequest.cs" />
+    <Compile Include="Models\SpokenResults\SpokenResultsUnits.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\SubPod.cs" />
     <Compile Include="Models\Tip.cs" />
