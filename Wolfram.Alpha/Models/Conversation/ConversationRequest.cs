@@ -1,4 +1,4 @@
-﻿using System.Device.Location;
+﻿using GeoCoordinatePortable;
 using Wolfram.Alpha.Attributes;
 
 namespace Wolfram.Alpha.Models.Conversation
