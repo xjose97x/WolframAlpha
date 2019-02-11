@@ -12,7 +12,7 @@ namespace Test
 {
     internal class Program
     {
-        private static readonly string apiKey = ConfigurationManager.AppSettings["WolframAlpha.Key"];
+        private static readonly string apiKey = "YOUR WOLFRAM ALPHA KEY";
         private static readonly WolframAlphaService service = new WolframAlphaService(apiKey);
 
         public static void Main()
